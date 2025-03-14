@@ -1,0 +1,29 @@
+main{
+    min-height: 90dvh;
+    margin-top: 50px;
+    @include flex(center, center, column);
+    gap: 40px;
+
+    #grid_container{
+        min-height: 90dvh;
+        width: 85%;
+    }
+}
+
+// medias queries
+
+@media screen and (min-width: 2520px){
+    main{
+        #grid_container{
+            width: 65%;
+        }
+    }
+}
+
+@media screen and (max-width: 800px){
+    main{
+        #grid_container{
+            width: 90%;
+        }
+    }
+}
