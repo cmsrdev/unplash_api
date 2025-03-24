@@ -1,6 +1,6 @@
 import './styles/global/style.scss';
 import createHeader from './styles/layout/header/header';
-import createMain from './styles/layout/main/gallery/gallery';
+import { createMain } from './styles/layout/main/gallery/gallery';
 import createFooter from './styles/layout/footer/footer';
 
 const $app = document.querySelector('#app');

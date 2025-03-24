@@ -38,6 +38,7 @@ const cardsTemplates = (card) => {
     `;
 };
 
+export
 const printCards = (cards) => {
     const $main = document.querySelector('main');
     $main.innerHTML = mainTemplate();
@@ -68,6 +69,14 @@ const inputEvent = async () => {
     const $button = document.querySelector('#search_btn');
 
     const printHtmlTemplate = async () =>{
+        if($input.value.trim() === ''){
+            return;
+        }
+
+        if(!sessionStorage.getItem('firtsSearch')){
+            sessionStorage.setItem('firtsSearch', $input.value.trim());
+        }
+
         const images = await searchPhotos($input.value);
         printCards(images.response.results);
 
@@ -86,6 +95,7 @@ const inputEvent = async () => {
     });
 };
 
+export
 const createMain = async () => {
     const $main = document.querySelector('main');
     $main.innerHTML = mainTemplate(), inputEvent();
@@ -93,4 +103,3 @@ const createMain = async () => {
     const images = await searchPhotos('dog');
     printCards(images.response.results);
 };
-export default createMain

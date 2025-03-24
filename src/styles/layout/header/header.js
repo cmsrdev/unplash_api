@@ -1,4 +1,6 @@
 import './header.scss';
+import searchPhotos from '../../../api/api';
+import { printCards } from '../main/gallery/gallery';
 
 const headerTemplate = () => {
     return `
@@ -29,3 +31,20 @@ const createHeader = () => {
     $header.innerHTML = headerTemplate();
 };
 export default createHeader;
+
+const addEventLogo = () => {
+    setTimeout(() =>{
+        const $logo = document.querySelector('#main_logo');
+        const $input = document.querySelector('#search_input');
+        $logo.addEventListener('click', async () => {
+            if(sessionStorage.getItem('firtsSearch')){
+            const images = await searchPhotos(sessionStorage.getItem('firtsSearch'));
+            printCards(images.response.results);
+        
+            $input.value = '';
+            }
+        });
+    }, 0)
+};
+
+addEventLogo();
